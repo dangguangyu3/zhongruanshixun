@@ -5,7 +5,7 @@ package mydocuments;
  将通过添加作者的相关信息可以在此类中说明
  */
 
-public class Author {
+public class Author extends Object{
     private String name;
     public Author(String name){
         this.name = name;
