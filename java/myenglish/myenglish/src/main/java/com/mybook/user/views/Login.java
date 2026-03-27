@@ -5,7 +5,7 @@ import com.mybook.user.controller.UserController;
 import java.util.Scanner;
 
 public class Login {
-    public void mylogin(){
+    public String mylogin(){
         Scanner scanner=new Scanner(System.in);
         System.out.println("-------------------------");
         System.out.println("请输入用户名：");
@@ -22,6 +22,7 @@ public class Login {
             System.out.println("#    # #    # #    # #    # #      #    # #    #");
             System.out.println(" ####   ####   ####   ####  ######  ####   ####");
             System.out.println("登陆成功");
+            return myusername;
         }
         else {
             System.out.println("######   ##   # #      ###### #####  ");
@@ -31,6 +32,7 @@ public class Login {
             System.out.println("#      #    # # #      #      #    # ");
             System.out.println("#      #    # # ###### ###### #####  ");
             System.out.println("登陆失败");
+            return "匿名用户";
         }
     }
 }

@@ -1,33 +1,48 @@
 package com.mybook.user.controller;
 
+import com.mybook.tools.myjdbc.DataBaseConnection;
 import com.mybook.user.bean.Myuser;
 
+import java.sql.SQLException;
 
-public class UserControllerImpl implements UserController{
+
+public class UserControllerImpl implements UserController {
     @Override
     public boolean login(String username, String password) {
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url="jdbc:mysql://localhost:3306/myenglishbook?characterEncoding=utf-8"+"&useSSL=false&serverTimezone=UTC";
-            String userdata="root";
-            String passwd="admin";
-            java.sql.Connection conn=java.sql.DriverManager.getConnection(url,userdata,passwd);
-            String sql="select * from myuser where username=? and password=?";
-            java.sql.PreparedStatement ps=conn.prepareStatement(sql);
-            ps.setString(1,username);
-            ps.setString(2,password);
-            java.sql.ResultSet rs=ps.executeQuery();
-            if(rs.next()){
+        try {
+            java.sql.Connection conn = DataBaseConnection.getConnection();
+            String sql = "select * from myuser where username=? and password=?";
+            java.sql.PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            java.sql.ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
                 return true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
         return false;
     }
 
     @Override
-    public boolean register(Myuser user) {
+    public boolean register(Myuser myuser) {
+        try {
+            java.sql.Connection conn = DataBaseConnection.getConnection();
+            String sql = "insert into myuser(username,password,identify) values(?,?,?)";
+            java.sql.PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, myuser.getUsername());
+            ps.setString(2, myuser.getPassword());
+            ps.setInt(3, myuser.getIdentity());
+            int res = ps.executeUpdate();
+            if (res > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
         return false;
     }
 }
