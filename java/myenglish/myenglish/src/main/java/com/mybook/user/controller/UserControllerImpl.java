@@ -3,8 +3,6 @@ package com.mybook.user.controller;
 import com.mybook.tools.myjdbc.DataBaseConnection;
 import com.mybook.user.bean.Myuser;
 
-import java.sql.SQLException;
-
 
 public class UserControllerImpl implements UserController {
     @Override

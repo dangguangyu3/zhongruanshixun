@@ -44,7 +44,7 @@ public class MyOrderController
                 //取数量
                 myorder.setMycount(rs.getInt( "mycount"));
                 //取价格
-                myorder.setMyprice(rs.getDouble( "price"));
+                myorder.setMyprice(rs.getDouble( "myprice"));
                 //取地址
                 myorder.setAddress(rs.getString( "address"));
                 //取电话

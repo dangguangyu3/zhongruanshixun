@@ -1,5 +1,7 @@
 package com.mybook;
 
+import com.mybook.tools.myjdbc.CommonSearch;
+import com.mybook.tools.myjdbc.FindHashMap;
 import com.mybook.user.views.Login;
 import com.mybook.user.views.Register;
 
@@ -23,7 +25,7 @@ public class MyMain {
                     register.myregister();
                     break;
                 case 3:
-                    System.out.println("商品列表");
+                    FindHashMap.searchall(CommonSearch.findalldata("mybook",1));
                     break;
                 case 4:
                     System.out.println("退出");

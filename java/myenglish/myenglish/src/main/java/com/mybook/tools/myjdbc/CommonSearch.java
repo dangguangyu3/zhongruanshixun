@@ -1,6 +1,5 @@
 package com.mybook.tools.myjdbc;
 
-import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.List;
@@ -49,7 +48,7 @@ public class CommonSearch {
         return null;
     }
 
-    public static void main(String[] args) {
-        findalldata("mybook", 1);
-    }
+//    public static void main(String[] args) {
+//        findalldata("mybook", 1);
+//    }
 }
